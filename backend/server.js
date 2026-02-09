@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const DB_PATH = path.join(__dirname, '../data/db.json');
+const JWT_SECRET = process.env.JWT_SECRET || 'zen_vendor_default_secret_2026';
 
 app.use(cors());
 app.use(bodyParser.json());

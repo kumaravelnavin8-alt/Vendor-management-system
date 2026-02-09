@@ -86,7 +86,8 @@ loginForm.addEventListener('submit', async (e) => {
             localStorage.setItem('svms_user', JSON.stringify(data));
             showDashboard();
         } else {
-            authError.innerText = 'Invalid credentials';
+            const errorMsg = await res.text();
+            authError.innerText = errorMsg || 'Invalid credentials';
             authError.classList.remove('hidden');
         }
     } catch (err) {

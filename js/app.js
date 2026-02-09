@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 let currentUser = JSON.parse(localStorage.getItem('svms_user')) || null;
 
 // DOM Elements

@@ -215,6 +215,128 @@ td {
     color: var(--warning);
 }
 
+/* Mobile Header & Responsive Adjustments */
+.mobile-header {
+    display: none;
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.mobile-header h2 {
+    font-size: 1.25rem;
+    background: linear-gradient(to right, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+}
+
+.menu-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--text-main);
+    transition: 0.3s;
+}
+
+/* Responsive Media Queries */
+
+/* Tablet & Smaller (Mobile/Tablet) */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        width: 260px;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        background: var(--bg-dark);
+        border-right: 1px solid var(--glass-border);
+    }
+
+    .sidebar.active {
+        transform: translateX(280px);
+    }
+
+    .mobile-header {
+        display: flex;
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+    }
+
+    .auth-card {
+        margin: 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Big Screens / Ultra-wide (> 1600px) */
+@media (min-width: 1600px) {
+    .main-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Very Small Devices */
+@media (max-width: 480px) {
+    .view-title {
+        font-size: 1.5rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .main-content header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    #header-actions {
+        width: 100%;
+    }
+    
+    #header-actions button {
+        width: 100%;
+    }
+}
+
 /* Helpers */
 .hidden {
     display: none !important;

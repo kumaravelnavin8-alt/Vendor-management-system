@@ -10,6 +10,8 @@ const dynamicContent = document.getElementById('dynamic-content');
 const viewTitle = document.getElementById('view-title');
 const navContainer = document.getElementById('sidebar-nav');
 const userDisplay = document.getElementById('user-display');
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.querySelector('.sidebar');
 
 // Initial Setup
 const init = () => {
@@ -58,6 +60,11 @@ const renderSidebar = () => {
 const navigateTo = (viewId) => {
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     event?.currentTarget?.classList?.add('active');
+
+    // Close sidebar on mobile after navigation
+    if (window.innerWidth <= 1024) {
+        sidebar.classList.remove('active');
+    }
 
     switch (viewId) {
         case 'dashboard': loadDashboardStats(); break;
@@ -169,5 +176,22 @@ const renderVendorsList = async () => {
         </tr>
     `;
 };
+
+// Mobile Menu Toggle
+if (menuToggle) {
+    menuToggle.onclick = () => {
+        sidebar.classList.toggle('active');
+    };
+}
+
+// Close sidebar when clicking outside on mobile
+document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 &&
+        sidebar.classList.contains('active') &&
+        !sidebar.contains(e.target) &&
+        !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+    }
+});
 
 init();

@@ -30,11 +30,11 @@ app.use('/api/payments', require('./routes/payments'));
 app.use('/api/performance', require('./routes/performance'));
 
 // Serve static frontend files
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../')));
 
 // Handle root route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.listen(PORT, () => {

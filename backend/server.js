@@ -41,6 +41,28 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`ZenVendor Backend running on port ${PORT}`);
+const startServer = async () => {
+    // Initialize Database with default users
+    const { ensureDB } = require('./utils/initDB');
+    await ensureDB();
+
+    app.listen(PORT, () => {
+        console.log(`ZenVendor Backend running on port ${PORT}`);
+    });
+};
+
+// Test endpoint to check DB health (remove in production if sensitive)
+app.get('/api/health', (req, res) => {
+    try {
+        const db = readDB();
+        res.json({
+            status: 'ok',
+            usersCount: db.users.length,
+            dbPathExists: fs.existsSync(DB_PATH)
+        });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
+
+startServer();

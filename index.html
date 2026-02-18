@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumaravel Vendor Management System | Smart Vendor Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Auth Section -->
+    <div id="auth-view" class="auth-container">
+        <div class="glass auth-card animate-fade">
+            <h1 style="text-align: center; margin-bottom: 0.5rem;">Kumaravel Vendor Management System</h1>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Smart Vendor Management</p>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required placeholder="Enter username">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+
+            <p id="auth-error" style="color: var(--danger); font-size: 0.875rem; margin-top: 1rem; text-align: center;"
+                class="hidden"></p>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard-view" class="dashboard-grid hidden">
+        <!-- Mobile Header -->
+        <div class="mobile-header glass">
+            <h2>Kumaravel Vendor Management System</h2>
+            <button id="menu-toggle" class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <h2>Kumaravel Vendor Management System</h2>
+            <nav id="sidebar-nav">
+                <!-- Dynamic navigation based on role -->
+            </nav>
+            <div style="margin-top: auto; padding-top: 2rem;">
+                <button id="logout-btn" class="btn-primary"
+                    style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <div>
+                    <h1 id="view-title">Dashboard</h1>
+                    <p id="welcome-msg" style="color: var(--text-muted);">Welcome back, <span
+                            id="user-display">User</span></p>
+                </div>
+                <div id="header-actions">
+                    <!-- Dynamic buttons -->
+                </div>
+            </header>
+
+            <div id="dynamic-content">
+                <!-- Dashboard views will be injected here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals (Simplified) -->
+    <div id="modal-container" class="hidden"
+        style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 50; display: flex; align-items: center; justify-content: center;">
+        <div class="glass animate-fade"
+            style="width: 100%; max-width: 500px; padding: 2rem; background: var(--bg-dark);">
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
